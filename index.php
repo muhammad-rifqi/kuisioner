@@ -420,6 +420,111 @@
                     </table>
                 </div>
 
+                <p class="lead mb-0">11. Sebutkan jenis lampu yang I/B/S gunakan di rumah?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" name="jenis_lampu" value="">LED (Lanjut ke Pertanyaan No.15)</td>
+                            <td>3</td>
+                            <td><input type="radio" name="jenis_lampu" value=""> LED dan Non-LED(Lanjut ke Pertanyaan No.12)</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" name="jenis_lampu" value=""> Non-LED (Lanjut ke Pertanyaan No.12-14)  </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p class="lead mb-0">12. Apa alasan I/B/S belum/tidak menggunakan lampu LED sebagai alat penerangan di rumah? (lebih dari 1 jawaban)</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" name="alasan" value="">Tidak tahu informasi tentang lampu LED</td>
+                            <td>4</td>
+                            <td><input type="radio" name="alasan" value=""> Lampu LED boros listrik</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" name="alasan" value=""> Harga lampu LED tidak terjangkau (mahal)  </td>
+                            <td>5</td>
+                            <td><input type="radio" name="alasan" value=""> Lampu Non-LED yang lama masih menyala</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><input type="radio" name="alasan" value=""> Kualitas lampu LED buruk (cepat rusak) </td>
+                            <td>99</td>
+                            <td><input type="radio" name="alasan" value=""> Lainnya:............................</td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <p class="lead mb-0">13. Sebutkan jenis lampu Non-LED yang I/B/S gunakan di rumah? (lebih dari 1 jawaban) [SHOW CARD I]</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" name="daya" value="Incandescent">Incandescent</td>
+                            <td>4</td>
+                            <td><input type="radio" name="daya" value="Halogen"> Halogen </td>
+                            <td>7</td>
+                            <td><input type="radio" name="daya" value="High Pressure Sodium"> High Pressure Sodium </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" name="daya" value="LFL"> LFL  </td>
+                            <td>5</td>
+                            <td><input type="radio" name="daya" value="Mercury Vapour "> Mercury Vapour </td>
+                            <td>99</td>
+                            <td><input type="radio" name="daya" value=""> Lainnya:............................ </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><input type="radio" name="daya" value="Metal Halide"> Metal Halide </td>
+                            <td>6</td>
+                            <td><input type="radio" name="daya" value="CFL"> CFL </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p class="lead mb-0">14. Apakah I/B/S mengetahui bahwa limbah lampu Non-LED mengandung zat kimia yang berbahaya bagi lingkungan?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" name="kandungan" value="Ya">Ya</td>
+                            <td>4</td>
+                            <td><input type="radio" name="kandungan" value="Tidak"> Tidak </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <p class="lead mb-0">15. Sejak kapan I/B/S telah menggunakan lampu LED untuk penerangan rumah?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" name="lama" value="">< 1 tahun</td>
+                            <td>3</td>
+                            <td><input type="radio" name="lama" value=""> 2 - 4 tahun </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" name="lama" value=""> 1 - 2 tahun  </td>
+                            <td>4</td>
+                            <td><input type="radio" name="lama" value=""> > 4 tahun </td>
+                        </tr>
+                    </table>
+                </div>
+                
+
                 <!-- document.querySelector('input[name="genderS"]:checked').value; -->
 
 
