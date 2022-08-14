@@ -17,7 +17,25 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/toastmaker/dist/toastmaker.min.css">
+    <script type="text/javascript" src="https://unpkg.com/toastmaker/dist/toastmaker.min.js"></script>
 
+    <style>
+        .custom-border {
+            border: 1px solid #ffffff;
+            border-radius: 0;
+        }
+
+        .large-appearance {
+            top: 0;
+            background-color: #bd5d38;
+            color: #ffffff;
+            font-size: 20px;
+            max-width: initial;
+            width: 100%;
+            padding: 15px;
+        }
+    </style>
     <script type="text/javascript">
         function update() {
             const day = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUM'AT", "SABTU"];
@@ -33,9 +51,11 @@
         })
 
 
-        function save_responden(e) {
-            alert(e);
-            return false;
+        function save_responden() {
+            ToastMaker("Responden Berhasil di Input!", 5000, {
+                valign: 'top',
+                classList: ["custom-border", "large-appearance"]
+            });
         }
     </script>
 
@@ -54,21 +74,23 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarResponsive " style="text-align: left; padding-left:30px">
             <ul class="navbar-nav">
-                <li class="nav-item "><a class="nav-link js-scroll-trigger" href="#about">1. Home</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">2. Responden</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">3. Profile Responden</a>
+                <li class="nav-item "><a class="nav-link js-scroll-trigger" href="#home">1. Home</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#responden">2. Responden</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#profile">3. Profile Responden</a>
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">4. Pertanyaan Umum</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">5. Pertanyaan Khusus</a>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pertanyaanumum">4. Pertanyaan Umum</a>
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">6. Finish</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#pertanyaankhusus">5. Pertanyaan
+                        Khusus</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#done">6. Selesai</a></li>
             </ul>
         </div>
     </nav>
     <!-- Page Content-->
     <div class="container-fluid p-0">
-        <!-- About-->
-        <section class="resume-section" id="about">
+        <!-- Home-->
+        <section class="resume-section" id="home">
             <div class="resume-section-content">
                 <h1 class="mb-0">
                     SURVEI
@@ -103,8 +125,8 @@
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Experience-->
-        <section class="resume-section" id="experience">
+        <!-- Responden-->
+        <section class="resume-section" id="responden">
             <div class="resume-section-content">
                 <h2 class="mb-5 text-center">Responden</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
@@ -157,75 +179,257 @@
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Education-->
-        <section class="resume-section" id="education">
+        <!-- Profile-->
+        <section class="resume-section" id="profile">
             <div class="resume-section-content">
-                <h2 class="mb-5">Education</h2>
+                <h2 class="mb-5">PROFIL RESPONDEN</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
-                        <h3 class="mb-0">University of Colorado Boulder</h3>
-                        <div class="subheading mb-3">Bachelor of Science</div>
-                        <div>Computer Science - Web Development Track</div>
-                        <p>GPA: 3.23</p>
+                        <p class="lead mb-0">1. Berapa usia I/B/S saat ini?</p>
+                        <div class="table-responsive">
+                            <table class="table" border="1">
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="radio" id="usia" value="< 17 tahun (menikah) - 23 tahun (Gen Z)">
+                                        17 tahun (menikah) - 23 tahun (Gen Z)</td>
+                                    <td>3</td>
+                                    <td><input type="radio" id="usia" value="40 - 55 tahun (Gen X)"> 40 - 55 tahun (Gen
+                                        X)</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="radio" id="usia" value="24 - 39 tahun (Millenial)"> 24 - 39 tahun
+                                        (Millenial)</td>
+                                    <td>4</td>
+                                    <td><input type="radio" id="usia" value="> 56 tahun (Baby Boomers)"> > 56 tahun
+                                        (Baby Boomers)</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p class="lead mb-0">2. Apa pendidikan terakhir I/B/S?</p>
+                        <div class="table-responsive">
+                            <table class="table" border="1">
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="radio" id="pendidikan" value=""> Tidak Sekolah</td>
+                                    <td>3</td>
+                                    <td><input type="radio" id="pendidikan" value=""> SMP</td>
+                                    <td>5</td>
+                                    <td><input type="radio" id="pendidikan" value=""> Sarjana (D3/S1)</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="radio" id="pendidikan" value=""> SD</td>
+                                    <td>4</td>
+                                    <td> <input type="radio" id="pendidikan" value=""> SMA</td>
+                                    <td>6</td>
+                                    <td> <input type="radio" id="pendidikan" value=""> Pascasarjana (S2/S3)</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p class="lead mb-0">3. Berapa pendapatan bersih individu I/B/S (rata-rata dalam 1 bulan)?</p>
+                        <div class="table-responsive">
+                            <table class="table" border="1">
+                                <tr>
+                                    <td>1</td>
+                                    <td><input type="radio" id="pendapatan" value="">
+                                        < Rp.2.000.000</td>
+                                    <td>3</td>
+                                    <td><input type="radio" id="pendapatan" value=""> Rp.3.000.000 - Rp.4.000.000</td>
+                                    <td>5</td>
+                                    <td><input type="radio" id="pendapatan" value=""> Rp.6.000.000 - Rp.8.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><input type="radio" id="pendapatan" value=""> Rp.2.000.000 - Rp.3.000.000 </td>
+                                    <td>4</td>
+                                    <td><input type="radio" id="pendapatan" value=""> Rp.4.000.000 - Rp.6.000.000</td>
+                                    <td>6</td>
+                                    <td> <input type="radio" id="pendapatan" value=""> > Rp.8.000.000</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <p class="lead mb-0">4. Apa pekerjaan (profesi) I/B/S?</p>
+                        <div class="table-responsive">
+                            <table class="table" border="1">
+                                <tr>
+                                    <td>1.<input type="radio" id="pekerjaan" value=""> ASN/PNS </td>
+                                    <td>7.<input type="radio" id="pekerjaan" value=""> TNI/Polr</td>
+                                </tr>
+                                <tr>
+                                    <td>2.<input type="radio" id="pekerjaan" value=""> Ibu Rumah Tangga/Bapak Rumah
+                                        Tangga</td>
+                                    <td>8.<input type="radio" id="pekerjaan" value=""> Professional
+                                        (Pengacara/Konsultan/Dokter)</td>
+                                </tr>
+                                <tr>
+                                    <td>3.<input type="radio" id="pekerjaan" value=""> Pedagang/Wirausaha</td>
+                                    <td>9.<input type="radio" id="pekerjaan" value=""> Tenaga Kesehatan (Perawat/Bidan)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4.<input type="radio" id="pekerjaan" value=""> Pegawai Swasta</td>
+                                    <td>10.<input type="radio" id="pekerjaan" value=""> Tenaga Pengajar (Guru/Dosen)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5.<input type="radio" id="pekerjaan" value=""> Pelajar/Mahasiswa</td>
+                                    <td>11.<input type="radio" id="pekerjaan" value=""> Tidak Bekerja (Pengangguran)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6.<input type="radio" id="pekerjaan" value=""> Karyawan BUMN/BUMD</td>
+                                    <td>99.<input type="radio" id="pekerjaan" value=""> Lainnya:……………………….</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12"><button class="btn btn-primary" onclick="save_profile()"
+                                    style="color:white; width:100%">Simpan</button></div>
+                        </div>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">James Buchanan High School</h3>
-                        <div class="subheading mb-3">Technology Magnet Program</div>
-                        <p>GPA: 3.56</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">August 2002 - May 2006</span></div>
+                    <div class="flex-shrink-0"><span class="text-primary" id="output"></span></div>
                 </div>
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Skills-->
-        <section class="resume-section" id="skills">
+        <!-- Pertanyaan Umum-->
+        <section class="resume-section" id="pertanyaanumum">
             <div class="resume-section-content">
-                <h2 class="mb-5">Skills</h2>
-                <div class="subheading mb-3">Programming Languages & Tools</div>
-                <ul class="list-inline dev-icons">
-                    <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-angular"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-react"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-sass"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-less"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-npm"></i></li>
-                </ul>
-                <div class="subheading mb-3">Workflow</div>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Mobile-First, Responsive Design
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Browser Testing & Debugging
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Cross Functional Teams
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-check"></i></span>
-                        Agile Development & Scrum
-                    </li>
-                </ul>
+                <h2 class="mb-5">Pertanyaan Umum</h2>
+                <div class="subheading mb-3"> Lanjutan </div>
+                <p class="lead mb-0">5. Sebutkan golongan pelanggan tarif listrik yang I/B/S gunakan saat ini?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" id="tarif" value="">R1/TR 450 VA (Subsidi) </td>
+                            <td>4</td>
+                            <td><input type="radio" id="tarif" value=""> R1/TR 1.300 VA</td>
+                            <td>7</td>
+                            <td><input type="radio" id="tarif" value=""> R3/TR > 6.600 VA</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" id="tarif" value=""> R1/TR 900 VA (Subsidi)  </td>
+                            <td>5</td>
+                            <td><input type="radio" id="tarif" value=""> R1/TR 2.200 VA</td>
+                            <td>99</td>
+                            <td> <input type="radio" id="tarif" value=""> Lainnya:……………………….</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><input type="radio" id="tarif" value=""> R1/TR 900 VA </td>
+                            <td>6</td>
+                            <td><input type="radio" id="tarif" value=""> R2/TR 3.500 – 5.500 VA</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p class="lead mb-0">6. Berapa jumlah total pemakaian titik lampu rumah I/B/S saat ini?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" id="pemakaian" value="">< 5 titik lampu </td>
+                            <td>3</td>
+                            <td><input type="radio" id="pemakaian" value=""> 10 - 15 titik lampu </td>
+                            <td>5</td>
+                            <td><input type="radio" id="pemakaian" value=""> 20 - 25 titik lampu</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" id="pemakaian" value=""> 5 - 10 titik lampu   </td>
+                            <td>4</td>
+                            <td><input type="radio" id="pemakaian" value=""> 15 - 20 titik lampu </td>
+                            <td>6</td>
+                            <td> <input type="radio" id="pemakaian" value=""> > 25 titik lampu</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p class="lead mb-0">7. Berapa daya lampu yang paling banyak digunakan dalam rumah I/B/S saat ini?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" id="daya" value="">< 5 Watt</td>
+                            <td>3</td>
+                            <td><input type="radio" id="daya" value=""> 10 - 15 Watt</td>
+                            <td>5</td>
+                            <td><input type="radio" id="daya" value=""> 20 - 25 Watt</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" id="daya" value=""> 5 - 10 Watt  </td>
+                            <td>4</td>
+                            <td><input type="radio" id="daya" value=""> 15 - 10 Watt</td>
+                            <td>6</td>
+                            <td><input type="radio" id="daya" value=""> > 25 Watt</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p class="lead mb-0">8. Berapa harga lampu (per satuan) yang I/B/S gunakan saat ini?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" id="harga_lampu" value="">< Rp.10.000 </td>
+                            <td>3</td>
+                            <td><input type="radio" id="harga_lampu" value=""> Rp.15.000 - Rp.30.000</td>
+                            <td>5</td>
+                            <td><input type="radio" id="harga_lampu" value=""> > Rp.50.000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="radio" id="harga_lampu" value=""> Rp.10.000 - Rp.15.000  </td>
+                            <td>4</td>
+                            <td><input type="radio" id="harga_lampu" value=""> Rp.10.000 - Rp.15.000</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <p class="lead mb-0">9. Apakah I/B/S mengetahui label tanda hemat energi pada produk lampu?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" id="label_hemat" value="Ya"> Ya </td>
+                            <td>2</td>
+                            <td><input type="radio" id="label_hemat" value="Tidak"> Tidak  </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <p class="lead mb-0">10. Apakah I/B/S mengetahui kegunaan dan cara membaca dari label tanda hemat energi pada produk lampu?</p>
+                <div class="table-responsive">
+                    <table class="table" border="1">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="radio" id="kegunaan" value="Ya"> Ya </td>
+                            <td>2</td>
+                            <td><input type="radio" id="kegunaan" value="Tidak"> Tidak </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- document.querySelector('input[name="genderS"]:checked').value; -->
+
+
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Interests-->
-        <section class="resume-section" id="interests">
+        <!-- Pertanyaan Khusus-->
+        <section class="resume-section" id="pertanyaankhusus">
             <div class="resume-section-content">
-                <h2 class="mb-5">Interests</h2>
+                <h2 class="mb-5">Pertanyaan Khusus</h2>
                 <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid
                     skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking,
                     free climbing, and kayaking.</p>
@@ -235,10 +439,10 @@
             </div>
         </section>
         <hr class="m-0" />
-        <!-- Awards-->
-        <section class="resume-section" id="awards">
+        <!-- Done-->
+        <section class="resume-section" id="done">
             <div class="resume-section-content">
-                <h2 class="mb-5">Awards & Certifications</h2>
+                <h2 class="mb-5">Selesai</h2>
                 <ul class="fa-ul mb-0">
                     <li>
                         <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
