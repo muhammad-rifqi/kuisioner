@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Survei Rumah Tangga</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+
+    <script type="text/javascript">
+        function update() {
+            const day = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUM'AT", "SABTU"];
+            const month = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
+            const d = new Date();
+            output.innerHTML = day[d.getDay()] + ", ";
+            output.innerHTML += d.getDate() + "-";
+            output.innerHTML += month[d.getMonth()] + "-";
+            output.innerHTML += d.getFullYear() + ".";
+        }
+        window.addEventListener("load", function () {
+            update();
+        })
+
+
+        function save_responden(e) {
+            alert(e);
+            return false;
+        }
+    </script>
+
+</head>
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top " id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Survei Rumah Tangga</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                    src="assets/img/logo.png" alt="..." /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive " style="text-align: left; padding-left:30px">
+            <ul class="navbar-nav">
+                <li class="nav-item "><a class="nav-link js-scroll-trigger" href="#about">1. Home</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">2. Responden</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">3. Profile Responden</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">4. Pertanyaan Umum</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">5. Pertanyaan Khusus</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">6. Finish</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container-fluid p-0">
+        <!-- About-->
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h1 class="mb-0">
+                    SURVEI
+                    <span class="text-primary">RUMAH TANGGA</span>
+                </h1>
+                <div class="subheading mb-5">
+                    SURVEI PASAR PENCAHAYAAN EFISIENSI TINGGI DI INDONESIA 2022
+                    <a href="#">surveyor@localhost</a>
+                </div>
+                <p class="lead mb-5">Selamat Pagi/Siang/Sore, kami Surveyor dari Balai Besar Survei dan Pengujian
+                    Ketenagalistrikan, Energi Baru Terbarukan dan
+                    Konservasi Energi (BBSP KEBTKE) Ditjen EBTKE Kementerian ESDM RI, sedang mengadakan penelitian
+                    mengenai ”Survei Pasar
+                    Pencahayaan Efisiensi Tinggi di Indonesia”, khususnya di Kota tempat Ibu/Bapak/Saudara (I/B/S)
+                    tinggal. Penelitian ini digunakan untuk
+                    kepentingan ilmiah dan sebagai bahan rekomendasi kepada Pemerintah dan para pemangku kepentingan.
+                    Responden yang diwawancarai dalam
+                    penelitian ini adalah Konsumen yang pernah membeli dan/atau menggunakan lampu LED (Light Emitting
+                    Diode) dan Non-LED. Kami mohon
+                    kesediaan I/B/S meluangkan waktu sejenak untuk menjawab beberapa pertanyaan kami.</p>
+                <p class="lead mb-5">
+                <h3 class="mb-0">PETUNJUK PENGISIAN KUESIONER</h3>
+                <ol>
+                    <li>Berilah tanda √ pada pilihan jawaban I/B/S yang paling sesuai mewakili kondisi yang sebenarnya.
+                        I/B/S diminta untuk memilih satu
+                        jawaban yang paling sesuai dengan pendapat I/B/S.</li>
+                    <li> Tuliskan jawaban I/B/S pada tempat yang telah disediakan untuk jawaban terbuka.</li>
+                </ol>
+                </p>
+
+
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Experience-->
+        <section class="resume-section" id="experience">
+            <div class="resume-section-content">
+                <h2 class="mb-5 text-center">Responden</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Identitas Resonden Rumah Tangga</h3>
+                        <div class="subheading mb-3"><input type="text" id="no_kuisioner" placeholder="No Kuisioner"
+                                class="form-control" style="width:20%" required></div>
+                        <div class="row">
+                            <div class="col-md-4"><input type="text" id="nama_kota" placeholder="Nama Kota"
+                                    class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="nama_kecamatan" placeholder="Nama Kecamatan"
+                                    class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="nama_kelurahan" placeholder="Nama Kelurahan"
+                                    class="form-control" required></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4"><input type="text" id="nama_resonden_terpilih" placeholder="Nama Kota"
+                                    class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="alamat_responde" placeholder="Alamat Responden"
+                                    class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="jenis_kelamin" placeholder="Jenis Kelamin"
+                                    class="form-control" required></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4"><input type="text" id="status_kk" placeholder="Status KK"
+                                    class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="jumlah_anggota_keluarga"
+                                    placeholder="Jumlah Anggota Keluarga" class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="no_hp" placeholder="No Handphone"
+                                    class="form-control" required></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4"><input type="data" id="tanggal" placeholder="Tanggal Sekarang"
+                                    class="form-control" required></div>
+                            <div class="col-md-4"><input type="text" id="nama_surveyor" placeholder="Nama Surveyor"
+                                    class="form-control" required></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12"><button class="btn btn-primary" onclick="save_responden()"
+                                    style="color:white; width:100%">Simpan</button></div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary" id="output"></span></div>
+                </div>
+
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Education-->
+        <section class="resume-section" id="education">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Education</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">University of Colorado Boulder</h3>
+                        <div class="subheading mb-3">Bachelor of Science</div>
+                        <div>Computer Science - Web Development Track</div>
+                        <p>GPA: 3.23</p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">August 2006 - May 2010</span></div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">James Buchanan High School</h3>
+                        <div class="subheading mb-3">Technology Magnet Program</div>
+                        <p>GPA: 3.56</p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">August 2002 - May 2006</span></div>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Skills-->
+        <section class="resume-section" id="skills">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Skills</h2>
+                <div class="subheading mb-3">Programming Languages & Tools</div>
+                <ul class="list-inline dev-icons">
+                    <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-angular"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-react"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-sass"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-less"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-gulp"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-grunt"></i></li>
+                    <li class="list-inline-item"><i class="fab fa-npm"></i></li>
+                </ul>
+                <div class="subheading mb-3">Workflow</div>
+                <ul class="fa-ul mb-0">
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Mobile-First, Responsive Design
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Cross Browser Testing & Debugging
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Cross Functional Teams
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-check"></i></span>
+                        Agile Development & Scrum
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Interests-->
+        <section class="resume-section" id="interests">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Interests</h2>
+                <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid
+                    skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking,
+                    free climbing, and kayaking.</p>
+                <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television
+                    shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest
+                    technology advancements in the front-end web development world.</p>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <!-- Awards-->
+        <section class="resume-section" id="awards">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Awards & Certifications</h2>
+                <ul class="fa-ul mb-0">
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        Google Analytics Certified Developer
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        Mobile Web Specialist - Google Certification
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        1
+                        <sup>st</sup>
+                        Place - University of Colorado Boulder - Emerging Tech Competition 2009
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        1
+                        <sup>st</sup>
+                        Place - University of Colorado Boulder - Adobe Creative Jam 2008 (UI Design Category)
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        2
+                        <sup>nd</sup>
+                        Place - University of Colorado Boulder - Emerging Tech Competition 2008
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        1
+                        <sup>st</sup>
+                        Place - James Buchanan High School - Hackathon 2006
+                    </li>
+                    <li>
+                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                        3
+                        <sup>rd</sup>
+                        Place - James Buchanan High School - Hackathon 2005
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
