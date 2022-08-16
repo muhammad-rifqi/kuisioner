@@ -21,7 +21,7 @@ if(empty($_SESSION['username'])){
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="#">Survey Apps</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -55,6 +55,22 @@ if(empty($_SESSION['username'])){
                             <a class="nav-link" href="?menu=responden">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Responden
+                            </a>
+                            <a class="nav-link" href="?menu=kota">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Kota
+                            </a>
+                            <a class="nav-link" href="?menu=kecamatan">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Kecamatan
+                            </a>
+                            <a class="nav-link" href="?menu=kelurahan">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Kelurahan
+                            </a>
+                            <a class="nav-link" href="?menu=pengguna">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Pengguna
                             </a>
                         </div>
                     </div>
