@@ -159,11 +159,6 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
             <li class="breadcrumb-item active">Data Responden</li>
         </ol>
         <div class="card mb-4">
-            <div class="card-body">
-                <a class="btn btn-primary"> Tambah </a>
-            </div>
-        </div>
-        <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
                 Data Responden
@@ -172,38 +167,71 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Nama Responden Terpilih</th>
+                            <th>Alamat Responden</th>
+                            <th>No HP</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                        <th>ID</th>
+                            <th>Nama Responden Terpilih</th>
+                            <th>Alamat Responden</th>
+                            <th>No HP</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
+                        <?php
+                            $sql = mysqli_query($koneksi,"select * from responden");
+                            while($data = mysqli_fetch_array($sql)){
+                        ?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td><?php echo $data['id']; ?></td>
+                            <td><?php echo $data['nama_responden_terpilih']; ?></td>
+                            <td><?php echo $data['alamat_responden']; ?></td>
+                            <td><?php echo $data['no_hp']; ?></td>
+                            <td><a href="?menu=detailresponden&id=<?php echo $data['id']; ?>" class="btn btn-primary">View Detail</a> </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+<?php }if($_GET['menu'] == 'detailresponden') { 
+$data = mysqli_fetch_array(mysqli_query($koneksi,"select * from responden where id = '".$_GET['id']."'"));     
+?>
+
+<div class="container-fluid px-4">
+        <h1 class="mt-4">Detail Responden</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Detail Responden</li>
+        </ol>
+        <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" value="<?php echo $data['nama_responden_terpilih']?>" type="text" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                        <input class="form-control" value="<?php echo $data['alamat_responden']?>" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" value="<?php echo $data['no_hp']?>" type="text"  />
+                </div>
+        </div>
+    </div>    
+
+
 <?php }if($_GET['menu'] == 'kecamatan') { ?>
 
     <div class="container-fluid px-4">
