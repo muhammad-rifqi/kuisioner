@@ -19,5 +19,23 @@ if(empty($_SESSION['id'])){
         header('location:dashboard.php?menu=kota');
     }
 
+
+    if($_GET['act'] == 'tambahpengguna'){
+        mysqli_query($koneksi,"insert into pengguna (username,password,status_pengguna) values ('".$_POST['username']."','".md5($_POST['password'])."','".$_POST['status_pengguna']."')");
+        header('location:dashboard.php?menu=pengguna');
+    }
+    if($_GET['act'] == 'editpengguna'){
+        if(empty($_POST['password'])){ 
+            mysqli_query($koneksi,"update pengguna set username = '".$_POST['username']."', status_pengguna='".$_POST['status_pengguna']."' where id = '".$_POST['id']."'");
+        }else{
+            mysqli_query($koneksi,"update pengguna set username = '".$_POST['username']."', password='".md5($_POST['password'])."',status_pengguna='".$_POST['status_pengguna']."' where id = '".$_POST['id']."'");
+        }
+        header('location:dashboard.php?menu=pengguna');
+    }
+    if($_GET['act'] == 'hapuspengguna'){
+        mysqli_query($koneksi,"delete from pengguna where id = '".$_GET['id_pengguna']."'");
+        header('location:dashboard.php?menu=pengguna');
+    }
+
 }
 ?>

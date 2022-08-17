@@ -85,7 +85,7 @@ if($_GET['menu'] == ''){
                     <tbody>
                         <?php
                             $sql = mysqli_query($koneksi,"select * from kota");
-                            while($data = mysqli_fetch_assoc($sql)){
+                            while($data = mysqli_fetch_array($sql)){
                         ?>
                         <tr>
                             <td><?php echo $data['id']; ?></td>
@@ -214,7 +214,7 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                <a class="btn btn-primary"> Tambah </a>
+                <a class="btn btn-primary" href="?menu=tambahkecamatan"> Tambah </a>
             </div>
         </div>
         <div class="card mb-4">
@@ -226,7 +226,7 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                        <th>ID</th>
+                            <th>ID</th>
                             <th>Nama Kota</th>
                             <th>Nama Kecamatan</th>
                             <th>Aksi</th>
@@ -243,7 +243,7 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
                     <tbody>
                         <?php
                             $sql = mysqli_query($koneksi,"select * from kecamatan");
-                            while($data = mysqli_fetch_assoc($sql)){
+                            while($data = mysqli_fetch_array($sql)){
                         ?>
                         <tr>
                             <td><?php echo $data['id']; ?></td>
@@ -258,6 +258,45 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
         </div>
     </div>
 
+<?php } if($_GET['menu'] == 'tambahkecamatan') { ?>
+
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kecamatan</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tambah Kecamatan</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Tambah Kecamatan</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="aksi.php?act=tambahkecamatan">
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="inputKota" type="text" name="nama_kota">
+                            <option value="--">Pilih Kota</option>
+                            <?php
+                            $sql = mysqli_query($koneksi,"select * from kota");
+                            while($data = mysqli_fetch_array($sql)){
+                                echo "<option value='".$data['id']."'>".$data['nama_kota']."</option>";
+                            }
+                            ?>
+                    </select>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputKecamatan" type="text" name="nama_kecamatan" placeholder="Masukan Kecamatan" />
+                    <label for="inputKecamatan">Nama Kecamatan</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>    
+
+
 
 <?php } if($_GET['menu'] == 'kelurahan') { ?>
 
@@ -269,7 +308,7 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                <a class="btn btn-primary"> Tambah </a>
+                <a class="btn btn-primary" href="?menu=tambahkelurahan"> Tambah </a>
             </div>
         </div>
         <div class="card mb-4">
@@ -281,33 +320,32 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Nama Kecamatan</th>
+                            <th>Nama Kelurahan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Nama Kecamatan</th>
+                            <th>Nama Kelurahan</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
+                        <?php
+                            $sql = mysqli_query($koneksi,"select * from kelurahan");
+                            while($data = mysqli_fetch_array($sql)){
+                        ?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td><?php echo $data['id']; ?></td>
+                            <td><?php echo kecamatan($data['id_kecamatan']); ?></td>
+                            <td><?php echo $data['nama_kelurahan']; ?></td>
+                            <td><a href="?menu=editkelurahan&id=<?php echo $data['id']; ?>" class="btn btn-warning">Ubah</a> <a href="aksi.php?act=hapuskelurahan&id_kelurahan=<?php echo $data['id']; ?>" class="btn btn-danger">Hapus</a></td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -335,33 +373,35 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
+                        <?php
+                            $sql = mysqli_query($koneksi,"select * from pengguna");
+                            while($data = mysqli_fetch_array($sql)){
+                        ?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td><?php echo $data['id']; ?></td>
+                            <td><?php echo $data['username']; ?></td>
+                            <td><?php echo $data['password']; ?></td>
+                            <td><?php echo ($data['status_pengguna']) == 1 ? "Admin" : "Pengguna Biasa"; ?></td>
+                            <td><a href="?menu=editpengguna&id=<?php echo $data['id']; ?>" class="btn btn-warning">Ubah</a> <a href="aksi.php?act=hapuspengguna&id_pengguna=<?php echo $data['id']; ?>" class="btn btn-danger">Hapus</a></td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -374,53 +414,80 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
         <h1 class="mt-4">Data Kota</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-            <li class="breadcrumb-item active">Tambah Kota</li>
+            <li class="breadcrumb-item active">Tambah Pengguna</li>
         </ol>
 
         <div class="card-header">
-            <h3 class="text-left">Tambah Kota</h3>
+            <h3 class="text-left">Tambah Pengguna</h3>
         </div>
         <div class="card-body">
-            <form>
+            <form method="POST" action="aksi.php?act=tambahpengguna">
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
-                            <label for="inputFirstName">First name</label>
+                            <input class="form-control" id="inputPengguna" type="text" name="username" placeholder="Pengguna" />
+                            <label for="inputPengguna"> Username </label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
-                            <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
-                            <label for="inputLastName">Last name</label>
+                            <input class="form-control" id="passWord" type="password" name="password" placeholder="PassWord" />
+                            <label for="passWord">Password</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                    <label for="inputEmail">Email address</label>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
-                            <label for="inputPassword">Password</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                            <label for="inputPasswordConfirm">Confirm Password</label>
-                        </div>
-                    </div>
+                    <input class="form-control" id="inputStatus" type="status" name="status_pengguna" placeholder="Status Pengguna (1 atau 2)" />
+                    <label for="inputStatus">Status Pengguna (1=admin, 2=pengguna biasa)</label>
                 </div>
                 <div class="mt-4 mb-0">
-                    <div class="d-grid"><button class="btn btn-primary" type="submit">Create Account</button></div>
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
                 </div>
             </form>
         </div>
     </div>    
 
+<?php }if($_GET['menu'] == 'editpengguna') { 
+$data = mysqli_fetch_array(mysqli_query($koneksi,"select * from pengguna where id = '".$_GET['id']."'"));        
+?>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kota</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Pengguna</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Edit Pengguna</h3>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="aksi.php?act=editpengguna">
+                <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="inputPengguna" type="text" name="username" value="<?php echo $data['username']; ?>" placeholder="Pengguna" />
+                            <label for="inputPengguna"> Username </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input class="form-control" id="passWord" type="password" name="password" placeholder="PassWord" />
+                            <label for="passWord">Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputStatus" type="status" name="status_pengguna" value="<?php echo $data['status_pengguna']; ?>" placeholder="Status Pengguna (1 atau 2)" />
+                    <label for="inputStatus">Status Pengguna (1=admin, 2=pengguna biasa)</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>    
 
 
 <?php } ?>
