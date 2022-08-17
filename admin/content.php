@@ -274,7 +274,7 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
         <div class="card-body">
             <form method="post" action="aksi.php?act=tambahkecamatan">
                 <div class="form-floating mb-3">
-                    <select class="form-control" id="inputKota" type="text" name="nama_kota">
+                    <select class="form-control" id="inputKota" type="text" name="id_kota">
                             <option value="--">Pilih Kota</option>
                             <?php
                             $sql = mysqli_query($koneksi,"select * from kota");
@@ -296,6 +296,49 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
         </div>
     </div>    
 
+<?php } if($_GET['menu'] == 'editkecamatan') { 
+$row = mysqli_fetch_array(mysqli_query($koneksi,"select * from kecamatan where id = '".$_GET['id']."'"));     
+?>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kecamatan</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Kecamatan</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Edit Kecamatan</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="aksi.php?act=editkecamatan">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="inputKota" type="text" name="id_kota">
+                            <option value="--">Pilih Kota</option>
+                            <?php
+                            $sql = mysqli_query($koneksi,"select * from kota");
+                            while($data = mysqli_fetch_array($sql)){
+                                if($data['id'] == $row['id_kota']){
+                                    echo "<option value='".$data['id']."' selected>".$data['nama_kota']."</option>";
+                                }else{
+                                    echo "<option value='".$data['id']."'>".$data['nama_kota']."</option>";
+                                }
+                            }
+                            ?>
+                    </select>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputKecamatan" type="text" name="nama_kecamatan" value="<?php echo $row['nama_kecamatan']?>" placeholder="Masukan Kecamatan" />
+                    <label for="inputKecamatan">Nama Kecamatan</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>    
 
 
 <?php } if($_GET['menu'] == 'kelurahan') { ?>
@@ -351,6 +394,90 @@ $data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = 
             </div>
         </div>
     </div>
+
+<?php } if($_GET['menu'] == 'tambahkelurahan') { ?>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kelurahan</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tambah Kelurahan</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Tambah Kelurahan</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="aksi.php?act=tambahkelurahan">
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="inputKecamatan" type="text" name="id_kecamatan">
+                            <option value="--">Pilih Kecamatan</option>
+                            <?php
+                            $sql = mysqli_query($koneksi,"select * from kecamatan");
+                            while($data = mysqli_fetch_array($sql)){
+                                echo "<option value='".$data['id']."'>".$data['nama_kecamatan']."</option>";
+                            }
+                            ?>
+                    </select>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputKelurahan" type="text" name="nama_kelurahan" placeholder="Masukan Kelurahan" />
+                    <label for="inputKelurahan">Nama Kelurahan</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>  
+
+    <?php } if($_GET['menu'] == 'editkelurahan') { 
+    $row = mysqli_fetch_array(mysqli_query($koneksi,"select * from kelurahan where id = '".$_GET['id']."'")); 
+    ?>
+
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kelurahan</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Kelurahan</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Edit Kelurahan</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="aksi.php?act=editkelurahan">
+                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="inputKecamatan" type="text" name="id_kecamatan">
+                            <option value="--">Pilih Kecamatan</option>
+                            <?php
+                            $sql = mysqli_query($koneksi,"select * from kecamatan");
+                            while($data = mysqli_fetch_array($sql)){
+                                if($row['id_kecamatan'] == $data['id']){
+                                    echo "<option value='".$data['id']."' selected>".$data['nama_kecamatan']."</option>";
+                                }else{
+                                    echo "<option value='".$data['id']."'>".$data['nama_kecamatan']."</option>";
+                                }
+                            }
+                            ?>
+                    </select>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputKelurahan" type="text" name="nama_kelurahan" value="<?php echo $row['nama_kelurahan']; ?>" placeholder="Masukan Kelurahan" />
+                    <label for="inputKelurahan">Nama Kelurahan</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>  
+
+
 <?php } if($_GET['menu'] == 'pengguna') { ?>
 
     <div class="container-fluid px-4">

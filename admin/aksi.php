@@ -37,5 +37,37 @@ if(empty($_SESSION['id'])){
         header('location:dashboard.php?menu=pengguna');
     }
 
+
+
+    if($_GET['act'] == 'tambahkecamatan'){
+        mysqli_query($koneksi,"insert into kecamatan (id_kota,nama_kecamatan) values ('".$_POST['id_kota']."','".$_POST['nama_kecamatan']."')");
+        header('location:dashboard.php?menu=kecamatan');
+    }
+
+    if($_GET['act'] == 'editkecamatan'){
+        mysqli_query($koneksi,"update kecamatan set id_kota='".$_POST['id_kota']."',nama_kecamatan = '".$_POST['nama_kecamatan']."' where id = '".$_POST['id']."'");
+        header('location:dashboard.php?menu=kecamatan');
+    }
+
+    if($_GET['act'] == 'hapuskecamatan'){
+        mysqli_query($koneksi,"delete from kecamatan where id = '".$_GET['id_kecamatan']."'");
+        header('location:dashboard.php?menu=kecamatan');
+    }
+    
+    if($_GET['act'] == 'tambahkelurahan'){
+        mysqli_query($koneksi,"insert into kelurahan (id_kecamatan,nama_kelurahan) values ('".$_POST['id_kecamatan']."','".$_POST['nama_kelurahan']."')");
+        header('location:dashboard.php?menu=kelurahan');
+    }
+
+    if($_GET['act'] == 'editkelurahan'){
+        mysqli_query($koneksi,"update kelurahan set id_kecamatan='".$_POST['id_kecamatan']."',nama_kelurahan = '".$_POST['nama_kelurahan']."' where id = '".$_POST['id']."'");
+        header('location:dashboard.php?menu=kelurahan');
+    }
+
+    if($_GET['act'] == 'hapuskelurahan'){
+        mysqli_query($koneksi,"delete from kelurahan where id = '".$_GET['id_kelurahan']."'");
+        header('location:dashboard.php?menu=kelurahan');
+    }
+    
 }
 ?>
