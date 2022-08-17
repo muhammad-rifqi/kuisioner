@@ -41,7 +41,7 @@
             const day = ["MINGGU", "SENIN", "SELASA", "RABU", "KAMIS", "JUM'AT", "SABTU"];
             const month = ["JANUARI", "FEBRUARI", "MARET", "APRIL", "MEI", "JUNI", "JULI", "AGUSTUS", "SEPTEMBER", "OKTOBER", "NOVEMBER", "DESEMBER"];
             const d = new Date();
-            document.getElementById("output").innerHTML=day[d.getDay()] + ", "+d.getDate() + "-"+month[d.getMonth()] +d.getFullYear();
+            document.getElementById("output").innerHTML=day[d.getDay()] + ", "+d.getDate() + "-"+month[d.getMonth()]+ "-" +d.getFullYear();
         }
         window.addEventListener("load", function () {
             update();
@@ -49,10 +49,24 @@
 
 
         function save_responden() {
-            ToastMaker("Responden Berhasil di Input!", 3000, {
-                valign: 'top',
-                classList: ["custom-border", "large-appearance"]
-            });
+
+            var hr = new XMLHttpRequest();
+            var url = "profile.php";
+            var fn = document.getElementById("first_name").value;
+            var ln = document.getElementById("last_name").value;
+            var vars = "firstname="+fn+"&lastname="+ln;
+            hr.open("POST", url, true);
+            hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            hr.onreadystatechange = function() {
+                if(hr.readyState == 4 && hr.status == 200) {
+                    var return_data = hr.responseText;
+                    ToastMaker("Responden Berhasil di Input!", 3000, {
+                        valign: 'top',
+                        classList: ["custom-border", "large-appearance"]
+                    });
+                }
+            }
+            hr.send(vars); 
         }
 
         function showKota(idk) {
@@ -87,6 +101,9 @@
         }
     }
 
+
+
+
     </script>
 
 </head>
@@ -116,8 +133,8 @@
                     <span class="text-primary">RUMAH TANGGA</span>
                 </h1>
                 <div class="subheading mb-5">
-                    SURVEI PASAR PENCAHAYAAN EFISIENSI TINGGI DI INDONESIA 2022
-                    <a href="#">surveyor@localhost</a>
+                    SURVEI PASAR PENCAHAYAAN EFISIENSI TINGGI DI INDONESIA 2022 , 
+                    <span class="text-primary" id="output"></span>
                 </div>
                 <p class="lead mb-5">Selamat Pagi/Siang/Sore, kami Surveyor dari Balai Besar Survei dan Pengujian
                     Ketenagalistrikan, Energi Baru Terbarukan dan
@@ -139,8 +156,6 @@
                     <li> Tuliskan jawaban I/B/S pada tempat yang telah disediakan untuk jawaban terbuka.</li>
                 </ol>
                 </p>
-
-
             </div>
         </section>
         <hr class="m-0" />

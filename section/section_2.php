@@ -106,6 +106,6 @@
                                     style="color:white; width:100%">Simpan</button></div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary" id="output"></span></div>
+                    <div class="flex-shrink-0"><span class="text-primary"></span></div>
                 </div>
             </div>

@@ -21,14 +21,14 @@
                             <div class="col-md-4">
                                 <span id="kecamatan">
                                         <select class="form-control">
-
+                                                <option value="--">Pilih Kecamatan </option>
                                         </select>
                                 </span>
                                 </div>
                             <div class="col-md-4">
                                 <span id="kelurahan">
                                         <select class="form-control">
-
+                                                <option value="--"> Pilih Kelurahan </option>
                                         </select>
                                 </span>
                                 </div>
@@ -64,7 +64,7 @@
                                     style="color:white; width:100%">Simpan</button></div>
                         </div>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary" id="output"></span></div>
+                    <div class="flex-shrink-0"><span class="text-primary"></span></div>
                 </div>
 
             </div>
