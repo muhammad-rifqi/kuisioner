@@ -15,7 +15,7 @@ if(isset($_GET['response']) == 'error'){
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-dark">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -40,7 +40,7 @@ if(isset($_GET['response']) == 'error'){
                                             </div> -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <!-- <a class="small" href="password.html">Forgot Password?</a> -->
-                                                <button class="btn btn-primary" type="submit" style="width:100%">Login</button>
+                                                <button class="btn btn-dark" type="submit" style="width:100%">Login</button>
                                             </div>
                                         </form>
                                     </div>

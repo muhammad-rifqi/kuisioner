@@ -1,4 +1,6 @@
 <?php
+include "config.php";
+include "helper.php";
 if($_GET['menu'] == ''){
 ?>
 <div class="container-fluid px-4">
@@ -46,7 +48,7 @@ if($_GET['menu'] == ''){
         </div>
     </div>
 <?php
-}if($_GET['menu'] == 'kota'){
+} if($_GET['menu'] == 'kota'){
 ?>
 <div class="container-fluid px-4">
         <h1 class="mt-4">Data Kota</h1>
@@ -56,7 +58,7 @@ if($_GET['menu'] == ''){
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                <a class="btn btn-primary"> Tambah </a>
+                <a class="btn btn-primary" href="?menu=tambahkota"> Tambah </a>
             </div>
         </div>
         <div class="card mb-4">
@@ -68,38 +70,87 @@ if($_GET['menu'] == ''){
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Nama Kota</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Nama Kota</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
+                        <?php
+                            $sql = mysqli_query($koneksi,"select * from kota");
+                            while($data = mysqli_fetch_assoc($sql)){
+                        ?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td><?php echo $data['id']; ?></td>
+                            <td><?php echo $data['nama_kota']; ?></td>
+                            <td><a href="?menu=editkota&id=<?php echo $data['id']; ?>" class="btn btn-warning">Ubah</a> <a href="aksi.php?act=hapuskota&id_kota=<?php echo $data['id']; ?>" class="btn btn-danger">Hapus</a></td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+<?php } if($_GET['menu'] == 'tambahkota') {?>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kota</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tambah Kota</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Tambah Kota</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="aksi.php?act=tambahkota">
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputKota" type="text" name="nama_kota" placeholder="Masukan Kota" />
+                    <label for="inputKota">Nama Kota</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>    
+                
+<?php } if($_GET['menu'] == 'editkota'){ 
+$data = mysqli_fetch_array(mysqli_query($koneksi,"select * from kota where id = '".$_GET['id']."'"));    
+?>
+<div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kota</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Kota</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Edit Kota</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" action="aksi.php?act=editkota">
+                <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputKota" type="text" name="nama_kota" value="<?php echo $data['nama_kota']; ?>" placeholder="Masukan Kota" />
+                    <label for="inputKota">Nama Kota</label>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Simpan</button></div>
+                </div>
+            </form>
+        </div>
+    </div>    
+
 <?php }if($_GET['menu'] == 'responden'){ ?>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Data Responden</h1>
@@ -175,33 +226,32 @@ if($_GET['menu'] == ''){
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                        <th>ID</th>
+                            <th>Nama Kota</th>
+                            <th>Nama Kecamatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>ID</th>
+                            <th>Nama Kota</th>
+                            <th>Nama Kecamatan</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
+                        <?php
+                            $sql = mysqli_query($koneksi,"select * from kecamatan");
+                            while($data = mysqli_fetch_assoc($sql)){
+                        ?>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td><?php echo $data['id']; ?></td>
+                            <td><?php echo kota($data['id_kota']); ?></td>
+                            <td><?php echo $data['nama_kecamatan']; ?></td>
+                            <td><a href="?menu=editkecamatan&id=<?php echo $data['id']; ?>" class="btn btn-warning">Ubah</a> <a href="aksi.php?act=hapuskecamatan&id_kecamatan=<?php echo $data['id']; ?>" class="btn btn-danger">Hapus</a></td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -273,7 +323,7 @@ if($_GET['menu'] == ''){
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-                <a class="btn btn-primary"> Tambah </a>
+                <a class="btn btn-primary" href="?menu=tambahpengguna"> Tambah </a>
             </div>
         </div>
         <div class="card mb-4">
@@ -317,5 +367,60 @@ if($_GET['menu'] == ''){
             </div>
         </div>
     </div>
+
+<?php }if($_GET['menu'] == 'tambahpengguna') {?>
+
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Data Kota</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+            <li class="breadcrumb-item active">Tambah Kota</li>
+        </ol>
+
+        <div class="card-header">
+            <h3 class="text-left">Tambah Kota</h3>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                            <label for="inputFirstName">First name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
+                            <label for="inputLastName">Last name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                    <label for="inputEmail">Email address</label>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                            <label for="inputPassword">Password</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                            <label for="inputPasswordConfirm">Confirm Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 mb-0">
+                    <div class="d-grid"><button class="btn btn-primary" type="submit">Create Account</button></div>
+                </div>
+            </form>
+        </div>
+    </div>    
+
+
 
 <?php } ?>
