@@ -51,19 +51,37 @@
         function save_responden() {
 
             var hr = new XMLHttpRequest();
-            var url = "profile.php";
-            var fn = document.getElementById("first_name").value;
-            var ln = document.getElementById("last_name").value;
-            var vars = "firstname="+fn+"&lastname="+ln;
+            var url = "lib/profile.php";
+            var kota = document.getElementById("nama_kota").value;
+            var kecamatan = document.getElementById("nama_kecamatan").value;
+            var kelurahan = document.getElementById("nama_kelurahan").value;
+            var namaresondenterpilih = document.getElementById("nama_resonden_terpilih").value;
+            var alamatresponden = document.getElementById("alamat_responden").value;
+            var jeniskelamin = document.getElementById("jenis_kelamin").value;
+            var statuskk = document.getElementById("status_kk").value;
+            var jumlahanggotakeluarga = document.getElementById("jumlah_anggota_keluarga").value;
+            var nohp = document.getElementById("no_hp").value;
+            var tanggal = document.getElementById("tanggal").value;
+            var namasurveyor = document.getElementById("nama_surveyor").value;
+            var nokuisioner = document.getElementById("no_kuisioner").value;
+            var vars = "kota="+kota+"&kecamatan="+kecamatan+"&kelurahan="+kelurahan+"&namaresondenterpilih="+namaresondenterpilih+"&alamatresponden="+alamatresponden+"&jeniskelamin="+jeniskelamin+"&statuskk="+statuskk+"&jumlahanggotakeluarga="+jumlahanggotakeluarga+"&nohp="+nohp+"&tanggal="+tanggal+"&namasurveyor="+namasurveyor+"&nokuisioner="+nokuisioner;
+            console.log(vars);
             hr.open("POST", url, true);
             hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             hr.onreadystatechange = function() {
                 if(hr.readyState == 4 && hr.status == 200) {
-                    var return_data = hr.responseText;
-                    ToastMaker("Responden Berhasil di Input!", 3000, {
-                        valign: 'top',
-                        classList: ["custom-border", "large-appearance"]
-                    });
+                    console.log(hr.responseText);
+                    if(hr.responseText == "success"){
+                        ToastMaker("Responden Berhasil di Input!", 3000, {
+                            valign: 'top',
+                            classList: ["custom-border", "large-appearance"]
+                        });
+                    }else{
+                        ToastMaker("Responden Gagal di Input!", 3000, {
+                            valign: 'top',
+                            classList: ["custom-border", "large-appearance"]
+                        });
+                    }
                 }
             }
             hr.send(vars); 

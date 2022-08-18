@@ -35,9 +35,9 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-4"><input type="text" id="nama_resonden_terpilih" placeholder="Nama Kota"
+                            <div class="col-md-4"><input type="text" id="nama_resonden_terpilih" placeholder="Nama Responden"
                                     class="form-control" required></div>
-                            <div class="col-md-4"><input type="text" id="alamat_responde" placeholder="Alamat Responden"
+                            <div class="col-md-4"><input type="text" id="alamat_responden" placeholder="Alamat Lengkap Responden"
                                     class="form-control" required></div>
                             <div class="col-md-4"><input type="text" id="jenis_kelamin" placeholder="Jenis Kelamin"
                                     class="form-control" required></div>
@@ -53,7 +53,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-4"><input type="data" id="tanggal" placeholder="Tanggal Sekarang"
+                            <div class="col-md-4"><input type="date" id="tanggal" placeholder="Tanggal Sekarang"
                                     class="form-control" required></div>
                             <div class="col-md-4"><input type="text" id="nama_surveyor" placeholder="Nama Surveyor"
                                     class="form-control" required></div>
